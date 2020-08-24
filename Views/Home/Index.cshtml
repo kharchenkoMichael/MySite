@@ -2,7 +2,82 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div style="background-color:bisque">
+    <div style="float:right; background-color:blue">
+        <img src="~/avatar.jpg" width="210" height="auto" />
+        <h4 class="text-center">Харченко Михаил</h4>
+    </div>
+    <div>
+        <h5>
+            Всем привет. Меня зовут Миша и сейчас вы на моём персональном сайте.
+        </h5>
+        <div>
+            <h3>
+                Образование.
+            </h3>
+            <p>
+                2014-2018 - Бакалавр ХНУРЕ, кафедра компьютерных наук, специальность програмная инженерия.
+            </p>
+            <p>
+                2018-2020 - Магистр ХНУРЕ, кафедра компьютерных наук, специальность системы искусственного интеллекта.
+            </p>
+        </div>
+        <div>
+            <h3>
+                Карьера.
+            </h3>
+            <p>
+                2017-2020 - Unity C# Developer в компании Plarium.
+            </p>
+        </div>
+    </div>
 </div>
+<a asp-controller="Blog" asp-action="Index" style="margin:0px,50px">
+    <div style="background-color:aquamarine; height:auto">
+        <div>
+            <h3>
+                Блог
+            </h3>
+        </div>
+
+        <div style="background-color:burlywood; height:auto">
+            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">a</div>
+            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">s</div>
+            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">d</div>
+            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">f</div>
+        </div>
+    </div>
+</a>
+<a asp-controller="Programming" asp-action="Index" style="margin:0px,50px">
+    <div style="background-color:aquamarine; height:auto">
+        <div>
+            <h3>
+                Программирование
+            </h3>
+        </div>
+
+        <div style="background-color:burlywood; height:auto">
+            <div style="background-color:black; width:290px; height:300px; float:left; margin:30px">a</div>
+            <div style="background-color:black; width:290px; height:300px; float:left; margin:30px">s</div>
+            <div style="background-color:black; width:290px; height:300px; float:left; margin:30px">d</div>
+        </div>
+    </div>
+</a>
+<a asp-controller="Project" asp-action="Index" style="margin:0px,50px">
+    <div style="background-color:aquamarine; height:auto">
+        <div>
+            <h3>
+                Проекты
+            </h3>
+        </div>
+
+        <div style="background-color:burlywood; height:auto">
+            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">a</div>
+            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">s</div>
+            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">d</div>
+            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">f</div>
+        </div>
+    </div>
+</a>
+
+
