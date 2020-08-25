@@ -2,12 +2,8 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div style="background-color:bisque">
-    <div style="float:right; background-color:blue">
-        <img src="~/avatar.jpg" width="210" height="auto" />
-        <h4 class="text-center">Харченко Михаил</h4>
-    </div>
-    <div>
+<div class="row">
+    <div class="col-9">
         <h5>
             Всем привет. Меня зовут Миша и сейчас вы на моём персональном сайте.
         </h5>
@@ -31,53 +27,53 @@
             </p>
         </div>
     </div>
+    <div class="col-3">
+        <img src="~/avatar.jpg" class="container"/>
+        <h4 class="text-center">Харченко Михаил</h4>
+    </div>
 </div>
-<a asp-controller="Blog" asp-action="Index" style="margin:0px,50px">
-    <div style="background-color:aquamarine; height:auto">
-        <div>
+<a asp-controller="Programming" asp-action="Index" style="margin:0px 50px">
+    <div class="container">
+        <div class="row">
             <h3>
                 Блог
             </h3>
         </div>
 
-        <div style="background-color:burlywood; height:auto">
-            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">a</div>
-            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">s</div>
-            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">d</div>
-            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">f</div>
+        <div class="row">
+            <div class="col-3" style="background-color:black;">a</div>
+            <div class="col-3" style="background-color:black;">a</div>
+            <div class="col-3" style="background-color:black;">a</div>
+            <div class="col-3" style="background-color:black;">a</div>
         </div>
     </div>
 </a>
-<a asp-controller="Programming" asp-action="Index" style="margin:0px,50px">
-    <div style="background-color:aquamarine; height:auto">
-        <div>
+<a asp-controller="Project" asp-action="Index" style="margin:0px 50px">
+    <div class="container">
+        <div class="row">
             <h3>
-                Программирование
+                Блог
             </h3>
         </div>
 
-        <div style="background-color:burlywood; height:auto">
-            <div style="background-color:black; width:290px; height:300px; float:left; margin:30px">a</div>
-            <div style="background-color:black; width:290px; height:300px; float:left; margin:30px">s</div>
-            <div style="background-color:black; width:290px; height:300px; float:left; margin:30px">d</div>
+        <div class="row">
+            <div class="col-6" style="background-color:black;">a</div>
+            <div class="col-6" style="background-color:black;">a</div>
         </div>
     </div>
 </a>
-<a asp-controller="Project" asp-action="Index" style="margin:0px,50px">
-    <div style="background-color:aquamarine; height:auto">
-        <div>
+<a asp-controller="Blog" asp-action="Index" style="margin:0px 50px">
+    <div class="container">
+        <div class="row">
             <h3>
-                Проекты
+                Блог
             </h3>
         </div>
 
-        <div style="background-color:burlywood; height:auto">
-            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">a</div>
-            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">s</div>
-            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">d</div>
-            <div style="background-color:black; width:210px; height:300px; float:left; margin:30px">f</div>
+        <div class="row">
+            <div class="col-4" style="background-color:black;">a</div>
+            <div class="col-4" style="background-color:black;">a</div>
+            <div class="col-4" style="background-color:black;">a</div>
         </div>
     </div>
 </a>
-
-
