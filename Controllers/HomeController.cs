@@ -4,8 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MySite.Models;
+using MySite.ViewModels;
 
 namespace MySite.Controllers
 {
@@ -22,7 +24,39 @@ namespace MySite.Controllers
 
     public IActionResult Index()
     {
-      return View();
+      var blogs = _context.Blogs.Take(4);
+      var courses = _context.Courses.Take(3);
+      var projects = _context.Projects.Take(2);
+      return View(new MainViewModel
+      {
+        Blogs = blogs.ToList(),
+        Courses = courses.ToList(),
+        Projects = projects.ToList()
+      });
+    }
+
+    public IActionResult Blogs()
+    {
+      return View(_context.Blogs.ToList());
+    }
+
+    public IActionResult Blog(int id)
+    {
+      return View(_context.Blogs.Where(blog => blog.Id == id).Include(b => b.BlogComponents).FirstOrDefault());
+    }
+
+    public IActionResult BlogCard(Blog blog)
+    {
+      return PartialView(blog);
+    }
+
+    public IActionResult CourseCard(Course course)
+    {
+      return PartialView(course);
+    }
+    public IActionResult ProjectCard(Project project)
+    {
+      return PartialView(project);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

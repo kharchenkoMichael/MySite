@@ -19,7 +19,6 @@ namespace MySite.Models
     public SiteDbContext(DbContextOptions<SiteDbContext> options)
     : base(options)
     {
-      Database.EnsureCreated();
     }
   }
 }

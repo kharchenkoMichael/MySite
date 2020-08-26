@@ -11,6 +11,7 @@ namespace MySite.Models
   {
     public int Id { get; set; }
     public int BlogId { get; set; }
+    public Blog Blog { get; set; }
     public string ContentHtml { get; set; }
     public int OrderPosition { get; set; }
   }

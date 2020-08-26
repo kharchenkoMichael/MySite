@@ -1,79 +1,73 @@
-﻿@{
+﻿@using MySite.ViewModels
+@model MainViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="row">
-    <div class="col-9">
-        <h5>
-            Всем привет. Меня зовут Миша и сейчас вы на моём персональном сайте.
-        </h5>
-        <div>
-            <h3>
-                Образование.
-            </h3>
-            <p>
-                2014-2018 - Бакалавр ХНУРЕ, кафедра компьютерных наук, специальность програмная инженерия.
-            </p>
-            <p>
-                2018-2020 - Магистр ХНУРЕ, кафедра компьютерных наук, специальность системы искусственного интеллекта.
-            </p>
-        </div>
-        <div>
-            <h3>
-                Карьера.
-            </h3>
-            <p>
-                2017-2020 - Unity C# Developer в компании Plarium.
-            </p>
-        </div>
+<div class="row bg-light">
+    <div class="col-8">
+        <p>
+            Привет. Меня зовут Миша и сейчас ты находишься на моём сайте.
+        </p>
+        <p>
+            Тут ты можешь почитать мои блоги. Посмотреть мои курсы по программированию. И посмотреть мои проекты.
+        </p>
     </div>
-    <div class="col-3">
-        <img src="~/avatar.jpg" class="container"/>
-        <h4 class="text-center">Харченко Михаил</h4>
+    <div class="col-4">
+        <img src="~/avatar.jpg" class="img-fluid" />
+        <h5 class="text-center">
+            Харченко Михаил
+            <br />
+            <small>Программист</small>
+        </h5>
     </div>
 </div>
-<a asp-controller="Programming" asp-action="Index" style="margin:0px 50px">
-    <div class="container">
-        <div class="row">
-            <h3>
-                Блог
-            </h3>
-        </div>
-
-        <div class="row">
-            <div class="col-3" style="background-color:black;">a</div>
-            <div class="col-3" style="background-color:black;">a</div>
-            <div class="col-3" style="background-color:black;">a</div>
-            <div class="col-3" style="background-color:black;">a</div>
-        </div>
-    </div>
-</a>
-<a asp-controller="Project" asp-action="Index" style="margin:0px 50px">
-    <div class="container">
-        <div class="row">
-            <h3>
-                Блог
-            </h3>
-        </div>
-
-        <div class="row">
-            <div class="col-6" style="background-color:black;">a</div>
-            <div class="col-6" style="background-color:black;">a</div>
+<br />
+<div class="row">
+    <div class="col">
+        <div class="my-3">
+            <h4><a class="text-dark" asp-area="" asp-controller="Home" asp-action="Blogs">Блоги:</a></h4>
+            <div class="row">
+                @foreach (var blog in Model.Blogs.Take(4))
+                {
+                    <div class="col-3">
+                        @await Html.PartialAsync("BlogCard", blog)
+                    </div>
+                }
+            </div>
         </div>
     </div>
-</a>
-<a asp-controller="Blog" asp-action="Index" style="margin:0px 50px">
-    <div class="container">
-        <div class="row">
-            <h3>
-                Блог
-            </h3>
-        </div>
-
-        <div class="row">
-            <div class="col-4" style="background-color:black;">a</div>
-            <div class="col-4" style="background-color:black;">a</div>
-            <div class="col-4" style="background-color:black;">a</div>
+</div>
+<br />
+<div class="row">
+    <div class="col">
+        <div class="my-3">
+            <h4>Программирование:</h4>
+            <div class="row">
+                @foreach (var course in Model.Courses.Take(3))
+                {
+                    <div class="col-4">
+                        @await Html.PartialAsync("CourseCard", course)
+                    </div>
+                }
+            </div>
         </div>
     </div>
-</a>
+</div>
+<br />
+<div class="row">
+    <div class="col">
+        <div class="my-3">
+            <h4>Проекты:</h4>
+            <div class="row">
+                @foreach (var project in Model.Projects.Take(2))
+                {
+                    <div class="col-6">
+                        @await Html.PartialAsync("ProjectCard", project)
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

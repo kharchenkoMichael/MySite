@@ -29,6 +29,7 @@ namespace MySite.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -54,6 +55,8 @@ namespace MySite.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BlogId");
+
                     b.ToTable("BlogComponents");
                 });
 
@@ -71,6 +74,7 @@ namespace MySite.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -93,6 +97,8 @@ namespace MySite.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("LessonId");
+
                     b.ToTable("Exercises");
                 });
 
@@ -107,6 +113,7 @@ namespace MySite.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VideoCW")
@@ -116,6 +123,8 @@ namespace MySite.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
 
                     b.ToTable("Lessons");
                 });
@@ -131,12 +140,14 @@ namespace MySite.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Link")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Picture")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -162,7 +173,45 @@ namespace MySite.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ExerciseId");
+
                     b.ToTable("Tests");
+                });
+
+            modelBuilder.Entity("MySite.Models.BlogComponent", b =>
+                {
+                    b.HasOne("MySite.Models.Blog", null)
+                        .WithMany("BlogComponents")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MySite.Models.Exercise", b =>
+                {
+                    b.HasOne("MySite.Models.Lesson", null)
+                        .WithMany("Exercises")
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MySite.Models.Lesson", b =>
+                {
+                    b.HasOne("MySite.Models.Course", null)
+                        .WithMany("Lessons")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MySite.Models.Test", b =>
+                {
+                    b.HasOne("MySite.Models.Exercise", null)
+                        .WithMany("Tests")
+                        .HasForeignKey("ExerciseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
