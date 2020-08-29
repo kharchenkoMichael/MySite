@@ -1,0 +1,21 @@
+﻿@model System.Collections.Generic.List<MySite.Models.Project>
+
+@{
+    ViewBag.Title = "Проекты";
+    Layout = "_Layout";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        @foreach (var project in Model)
+        {
+            <div class="row">
+                <div class="col">
+                    @await Html.PartialAsync("ProjectHorizontalCard", project)
+                    <br/>
+                </div>
+            </div>
+        }
+    </div>
+</div>

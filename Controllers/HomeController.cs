@@ -54,10 +54,22 @@ namespace MySite.Controllers
     {
       return PartialView(course);
     }
+
     public IActionResult ProjectCard(Project project)
     {
       return PartialView(project);
     }
+
+    public IActionResult ProjectHorizontalCard(Project project)
+    {
+      return PartialView(project);
+    }
+
+    public IActionResult Projects()
+    {
+      return View(_context.Projects.ToList());
+    }
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

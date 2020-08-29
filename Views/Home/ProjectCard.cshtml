@@ -1,9 +1,9 @@
 ﻿@model Project
 <div class="card">
-    <img src="Screenshot_1.png" class="card-img-top img-fluid" alt="...">
+    <img src="~/Screenshot_1.png" class="card-img-top img-fluid" alt="...">
     <div class="card-body">
         <h5 class="card-title">@Model.Title</h5>
         <p class="card-text">@Model.Description</p>
-        <a href="#" class="btn btn-primary">Перейти</a>
+        <a href="@Model.Link" class="btn btn-primary">Перейти</a>
     </div>
 </div>
