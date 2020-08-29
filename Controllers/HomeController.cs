@@ -70,6 +70,15 @@ namespace MySite.Controllers
       return View(_context.Projects.ToList());
     }
 
+    public IActionResult Courses()
+    {
+      return View(_context.Courses.ToList());
+    }
+    public IActionResult Course(int id)
+    {
+      return View(_context.Courses.Where(blog => blog.Id == id).Include(c => c.Lessons).FirstOrDefault());
+    }
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

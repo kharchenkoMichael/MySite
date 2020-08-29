@@ -1,0 +1,17 @@
+﻿@model Course
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "_Layout";
+}
+
+<h2>@Model.Title</h2>
+<img src="~/Screenshot_1.png" class="img-fluid"/>
+<h4>@Model.Description</h4>
+<br/>
+<div class="row">
+    @foreach (var lesson in Model.Lessons)
+    {
+        <div class="col-6"></div>
+    }
+</div>
