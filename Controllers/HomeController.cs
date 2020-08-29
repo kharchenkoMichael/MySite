@@ -59,6 +59,10 @@ namespace MySite.Controllers
     {
       return PartialView(project);
     }
+    public IActionResult LessonCard(Lesson lesson)
+    {
+      return PartialView(lesson);
+    }
 
     public IActionResult ProjectHorizontalCard(Project project)
     {
@@ -76,9 +80,14 @@ namespace MySite.Controllers
     }
     public IActionResult Course(int id)
     {
-      return View(_context.Courses.Where(blog => blog.Id == id).Include(c => c.Lessons).FirstOrDefault());
+      return View(_context.Courses.Where(course => course.Id == id).Include(c => c.Lessons).FirstOrDefault());
     }
 
+
+    public IActionResult Lesson(int id)
+    {
+      return View(_context.Lessons.Where(lesson => lesson.Id == id).Include(l => l.Exercises).FirstOrDefault());
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

@@ -1,0 +1,9 @@
+﻿@model Lesson
+
+<div class="card">
+    <img src="~/Screenshot_1.png" class="card-img-top img-fluid" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <a asp-area="" asp-controller="Home" asp-action="Lesson" asp-route-id=@Model.Id class="btn btn-primary">Перейти</a>
+    </div>
+</div>

@@ -6,12 +6,20 @@
 }
 
 <h2>@Model.Title</h2>
-<img src="~/Screenshot_1.png" class="img-fluid"/>
-<h4>@Model.Description</h4>
+<div class="row">
+    <div class="col-12">
+        <img src="~/Screenshot_1.png" class="img-fluid w-100"/>
+    </div>
+</div>
+
+<p>@Model.Description</p>
 <br/>
 <div class="row">
     @foreach (var lesson in Model.Lessons)
     {
-        <div class="col-6"></div>
+    <div class="col-6">
+
+        @await Html.PartialAsync("LessonCard", lesson)
+    </div>
     }
 </div>

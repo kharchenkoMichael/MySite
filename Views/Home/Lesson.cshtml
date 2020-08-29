@@ -1,0 +1,18 @@
+﻿@model Lesson
+
+@{
+    ViewBag.Title = "Lesson";
+    Layout = "_Layout";
+}
+
+<h2>Lesson</h2>
+<h3>@Model.Title</h3>
+<div class="row">
+    @foreach (var exercise in Model.Exercises)
+    {
+        <div class="col-12">
+            @Html.Raw(exercise.Content)
+        </div>
+        <br/>
+    }
+</div>
