@@ -82,6 +82,10 @@ namespace MySite.Controllers
     {
       return View(_context.Courses.Where(course => course.Id == id).Include(c => c.Lessons).FirstOrDefault());
     }
+    public IActionResult AboutMe()
+    {
+      return View();
+    }
 
 
     public IActionResult Lesson(int id)
