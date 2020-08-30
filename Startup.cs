@@ -25,10 +25,18 @@ namespace MySite
 
     public void ConfigureServices(IServiceCollection services)
     {
-      var connection = Configuration.GetConnectionString("DefaultConnection");
+
       services.AddDbContext<SiteDbContext>(options =>
-        options.UseSqlServer(connection).UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole())));
+        options.UseSqlServer(
+          Configuration.GetConnectionString("DefaultConnection"))
+          .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
+        );
+
+      services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+        .AddEntityFrameworkStores<SiteDbContext>();
+
       services.AddControllersWithViews();
+      services.AddRazorPages();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,18 +51,21 @@ namespace MySite
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
       }
+
       app.UseHttpsRedirection();
       app.UseStaticFiles();
 
       app.UseRouting();
 
+      app.UseAuthentication();
       app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllerRoute(
-                  name: "default",
-                  pattern: "{controller=Home}/{action=Index}/{id?}");
+          name: "default",
+          pattern: "{controller=Home}/{action=Index}/{id?}");
+        endpoints.MapRazorPages();
       });
     }
   }

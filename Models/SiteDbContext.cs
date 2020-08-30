@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace MySite.Models
 {
-  public class SiteDbContext:DbContext
+  public class SiteDbContext: IdentityDbContext<User>
   {
     public DbSet<Blog> Blogs { get; set; }
     public DbSet<BlogComponent> BlogComponents { get; set; }
@@ -17,7 +18,7 @@ namespace MySite.Models
     public DbSet<Test> Tests { get; set; }
 
     public SiteDbContext(DbContextOptions<SiteDbContext> options)
-    : base(options)
+      : base(options)
     {
     }
   }
